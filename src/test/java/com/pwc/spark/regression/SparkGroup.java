@@ -47,10 +47,10 @@ import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
-import com.relevantcodes.extentreports.ExtentReports;
+/*import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import com.sun.jna.platform.FileUtils;
+import com.sun.jna.platform.FileUtils;*/
 
 import utility.SparkUtility;
 
@@ -73,7 +73,7 @@ import com.pwc.spark.data.TestData.SelevanceBasic;
 public class SparkGroup  {
 	public Logger log = Logger.getLogger("SparkGroup");
 	
-	public ExtentReports report;
+	//public ExtentReports report;
 	
 	public Properties prop;
 	public WebDriver driver=null;
@@ -101,7 +101,7 @@ public class SparkGroup  {
 		}
 		
 		
-		report=new ExtentReports("C:/Users/nazmaz889/Desktop/AutoM/Reports/report.html");
+	//	report=new ExtentReports("C:/Users/nazmaz889/Desktop/AutoM/Reports/report.html");
 		 
 		 System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
@@ -141,7 +141,7 @@ public class SparkGroup  {
 	public void myChromeTest() throws IOException{
 		//this.setup();
 		
-		 ExtentTest loggerLogin;
+		// ExtentTest loggerLogin;
 		// driver.manage().window().maximize();
 	   String myEmailId= prop.getProperty("EMAIL");
 		
@@ -151,14 +151,14 @@ public class SparkGroup  {
 		try {
 			//logger=report.startTest("001:Login");
 			
-			 loggerLogin=report.startTest("001:Login");
+		//	 loggerLogin=report.startTest("001:Login");
 			 
 			
 			Login loginObject=new Login(driver);
 			loginObject.login(myEmailId);
-			loggerLogin.log(LogStatus.PASS, "Login completed successfully.");
+		//	loggerLogin.log(LogStatus.PASS, "Login completed successfully.");
 		     cookiesInstance = driver.manage().getCookies();
-			report.endTest(loggerLogin);
+		//	report.endTest(loggerLogin);
 			
 		} catch (Exception e1) {
 			//loggerLogin.log(LogStatus.FAIL, "Login completed successfully.");
@@ -230,7 +230,7 @@ public class SparkGroup  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-         report.flush();
+     //    report.flush();
 		//driver.get("C:/Users/nzaman003/Desktop/Report/report.html");
          WebDriver  driver1 ;
          ChromeOptions options1 = new ChromeOptions();
@@ -251,8 +251,8 @@ public class SparkGroup  {
 		
 		//try {
 			try {
-				ExtentTest loggerCreateGroup1;
-				loggerCreateGroup1=report.startTest("002:Create Open Group");
+			//	ExtentTest loggerCreateGroup1;
+			//	loggerCreateGroup1=report.startTest("002:Create Open Group");
 				String groupName=prop.getProperty("GN_NonAcc_Open");
 				String url=prop.getProperty("CREATEGROUP_URL");
 				int success=createGroupObject.createGrouppp(groupName , "NONACC" , " " , "OPEN" , url);
@@ -263,19 +263,19 @@ public class SparkGroup  {
 					e.printStackTrace();
 				}
 				if(success==1){
-				loggerCreateGroup1.log(LogStatus.PASS, "Open group is created successfully");
+			//	loggerCreateGroup1.log(LogStatus.PASS, "Open group is created successfully");
 				String pathOfSc=	SparkUtility.captureScreenShot(driver, "openGrppass");
 				
-				String img=	loggerCreateGroup1.addScreenCapture(pathOfSc);
-				loggerCreateGroup1.log(LogStatus.INFO, "Passed", "Passed at: " + img);
+				//String img=	loggerCreateGroup1.addScreenCapture(pathOfSc);
+			//	loggerCreateGroup1.log(LogStatus.INFO, "Passed", "Passed at: " + img);
 				}
 				else{
-					loggerCreateGroup1.log(LogStatus.FAIL, "Open group can not be created successfully");
+				//	loggerCreateGroup1.log(LogStatus.FAIL, "Open group can not be created successfully");
 				
 					String pathOfSc=	SparkUtility.captureScreenShot(driver, "openGrpfail");
 					
-					String img=	loggerCreateGroup1.addScreenCapture(pathOfSc);
-					loggerCreateGroup1.log(LogStatus.INFO, "Failure", "Failed at: " + img);
+				//	String img=	loggerCreateGroup1.addScreenCapture(pathOfSc);
+				//	loggerCreateGroup1.log(LogStatus.INFO, "Failure", "Failed at: " + img);
 					driver.close();
 					 driver = new ChromeDriver();
 					   driver.manage().window().maximize();
@@ -289,7 +289,7 @@ public class SparkGroup  {
 					
 					 
 				}
-				report.endTest(loggerCreateGroup1);
+			//	report.endTest(loggerCreateGroup1);
 			} catch (Exception e) {
 				
 				e.printStackTrace();
@@ -305,8 +305,8 @@ public class SparkGroup  {
 		
 		//try {
 			try {
-				ExtentTest loggerCreateGroup2;
-				loggerCreateGroup2=report.startTest("003:Create MemberOnly Group");
+				//ExtentTest loggerCreateGroup2;
+			//	loggerCreateGroup2=report.startTest("003:Create MemberOnly Group");
 				String groupName=prop.getProperty("GN_NonAcc_MemberOnly");
 				String url=prop.getProperty("CREATEGROUP_URL");
 				int success=createGroupObject.createGrouppp(groupName , "NONACC" , " " , "MEMBERONLY" , url);
@@ -317,18 +317,18 @@ public class SparkGroup  {
 					e.printStackTrace();
 				}
 				if(success==1){
-				loggerCreateGroup2.log(LogStatus.PASS, "Member only group is created successfully");
+			//	loggerCreateGroup2.log(LogStatus.PASS, "Member only group is created successfully");
 				String pathOfSc=	SparkUtility.captureScreenShot(driver, "memberonlypass");
 				
-				String img=	loggerCreateGroup2.addScreenCapture(pathOfSc);
-				loggerCreateGroup2.log(LogStatus.INFO, "Passed", "Passed at: " + img);
+			//	String img=	loggerCreateGroup2.addScreenCapture(pathOfSc);
+			//	loggerCreateGroup2.log(LogStatus.INFO, "Passed", "Passed at: " + img);
 				}
 				else{
-					loggerCreateGroup2.log(LogStatus.FAIL, "Member only group can not be  created successfully");
+				//	loggerCreateGroup2.log(LogStatus.FAIL, "Member only group can not be  created successfully");
 					String pathOfSc=	SparkUtility.captureScreenShot(driver, "memberonlyfail");
 					
-					String img=	loggerCreateGroup2.addScreenCapture(pathOfSc);
-					loggerCreateGroup2.log(LogStatus.INFO, "Failed", "Failed at: " + img);
+				//	String img=	loggerCreateGroup2.addScreenCapture(pathOfSc);
+					//loggerCreateGroup2.log(LogStatus.INFO, "Failed", "Failed at: " + img);
 					
 					driver.close();
 					 driver = new ChromeDriver();
@@ -340,7 +340,7 @@ public class SparkGroup  {
 						loginObject.login(myEmailId1);
 					
 				}
-				report.endTest(loggerCreateGroup2);
+			//	report.endTest(loggerCreateGroup2);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 			//	logger.log(LogStatus.FAIL, "Member only group can not be created");
@@ -358,8 +358,8 @@ public class SparkGroup  {
 		
 		//try {
 			try {
-				ExtentTest loggerCreateGroup3;
-				loggerCreateGroup3=report.startTest("004:Create Private Group");
+			//	ExtentTest loggerCreateGroup3;
+			//	loggerCreateGroup3=report.startTest("004:Create Private Group");
 				String groupName=prop.getProperty("GN_NonAcc_Private");
 				String url=prop.getProperty("CREATEGROUP_URL");
 				int success=createGroupObject.createGrouppp(groupName , "NONACC" , " " , "PRIVATE" , url);
@@ -370,18 +370,18 @@ public class SparkGroup  {
 					e.printStackTrace();
 				}
 				if(success==1){
-				loggerCreateGroup3.log(LogStatus.PASS, "Private group is created successfully");
+			//	loggerCreateGroup3.log(LogStatus.PASS, "Private group is created successfully");
 				String pathOfSc=	SparkUtility.captureScreenShot(driver, "privatepass");
 				
-				String img=	loggerCreateGroup3.addScreenCapture(pathOfSc);
-				loggerCreateGroup3.log(LogStatus.INFO, "Passed", "Passed at: " + img);
+			//	String img=	loggerCreateGroup3.addScreenCapture(pathOfSc);
+			//	loggerCreateGroup3.log(LogStatus.INFO, "Passed", "Passed at: " + img);
 				}
 				else{
-					loggerCreateGroup3.log(LogStatus.FAIL, "Private group can not be  created successfully");
+				//	loggerCreateGroup3.log(LogStatus.FAIL, "Private group can not be  created successfully");
 					String pathOfSc=	SparkUtility.captureScreenShot(driver, "privatefail");
 					
-					String img=	loggerCreateGroup3.addScreenCapture(pathOfSc);
-					loggerCreateGroup3.log(LogStatus.INFO, "Failed", "Failed at: " + img);
+				//	String img=	loggerCreateGroup3.addScreenCapture(pathOfSc);
+				//	loggerCreateGroup3.log(LogStatus.INFO, "Failed", "Failed at: " + img);
 					
 					driver.close();
 					 driver = new ChromeDriver();
@@ -393,7 +393,7 @@ public class SparkGroup  {
 						loginObject.login(myEmailId1);
 					
 				}
-				report.endTest(loggerCreateGroup3);
+			//	report.endTest(loggerCreateGroup3);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 			//	logger.log(LogStatus.FAIL, "Member only group can not be created");
@@ -413,8 +413,8 @@ public class SparkGroup  {
 		
 		//try {
 			try {
-				ExtentTest loggerCreateGroup4;
-				loggerCreateGroup4=report.startTest("005:Create Unlisted Group");
+			//	ExtentTest loggerCreateGroup4;
+			//	loggerCreateGroup4=report.startTest("005:Create Unlisted Group");
 				String groupName=prop.getProperty("GN_NonAcc_Unlisted");
 				String url=prop.getProperty("CREATEGROUP_URL");
 				int success=createGroupObject.createGrouppp(groupName , "NONACC" , " " , "UNLISTED" , url);
@@ -426,18 +426,18 @@ public class SparkGroup  {
 					e.printStackTrace();
 				}
 				if(success==1){
-				loggerCreateGroup4.log(LogStatus.PASS, "Unlisted group is created successfully");
+			//	loggerCreateGroup4.log(LogStatus.PASS, "Unlisted group is created successfully");
 				String pathOfSc=	SparkUtility.captureScreenShot(driver, "unlistedpass");
 				
-				String img=	loggerCreateGroup4.addScreenCapture(pathOfSc);
-				loggerCreateGroup4.log(LogStatus.INFO, "Passed", "Passed at: " + img);
+			//	String img=	loggerCreateGroup4.addScreenCapture(pathOfSc);
+			//	loggerCreateGroup4.log(LogStatus.INFO, "Passed", "Passed at: " + img);
 				}
 				else{
-					loggerCreateGroup4.log(LogStatus.FAIL, "Unlisted group can not be created successfully");	
+				//	loggerCreateGroup4.log(LogStatus.FAIL, "Unlisted group can not be created successfully");	
 					String pathOfSc=	SparkUtility.captureScreenShot(driver, "unlistedfailed");
 					
-					String img=	loggerCreateGroup4.addScreenCapture(pathOfSc);
-					loggerCreateGroup4.log(LogStatus.INFO, "Failed", "Failed at: " + img);
+				//	String img=	loggerCreateGroup4.addScreenCapture(pathOfSc);
+					//loggerCreateGroup4.log(LogStatus.INFO, "Failed", "Failed at: " + img);
 					driver.close();
 					 driver = new ChromeDriver();
 					   driver.manage().window().maximize();
@@ -448,7 +448,7 @@ public class SparkGroup  {
 						loginObject.login(myEmailId1);
 					
 				}
-				report.endTest(loggerCreateGroup4);
+			//	report.endTest(loggerCreateGroup4);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 			//	logger.log(LogStatus.FAIL, "Member only group can not be created");
@@ -458,7 +458,7 @@ public class SparkGroup  {
 	
 	}
 	
-	
+	/*
 	
 	public void create_ACC_CC_Private_Group(){
 		CreateGroup createGroupObject = new CreateGroup(driver);
@@ -954,7 +954,7 @@ public class SparkGroup  {
 	
 	
 	
-	
+	*/
 	
 	
 }
